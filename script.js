@@ -10,7 +10,27 @@ function convertToRoman(num) {
     };
 
   //your code here
-
+let romanNumeral='';
+	for(let i=0;i<7;i++)
+		{
+			const[symbol,value]=obj[i];
+			while(num>=value)
+				{
+				romanNumeral+=symbol;
+					num-=value;
+				}
+			if(i%2===0 && i<6)
+			{
+				const[nextSymbol,nextValue]=obj[i+2];
+				const subtractiveValue=value-nextValue;
+				if(num>=subtractiveValue)
+				{
+					romanNumeral+=nextSymbol+symbol;
+					num-=subtractiveValue;
+				}
+			}
+		}
+	return romanNumeral;
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
